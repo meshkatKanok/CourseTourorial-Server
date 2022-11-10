@@ -39,7 +39,7 @@ async function run(){
         app.get('/threeservices',async(req,res)=>{
             const query={}
             const cursor=travelData.find(query)
-            const newservice=await cursor.limit(3).toArray()
+            const newservice=await cursor.sort({"id":-1}).limit(3).toArray()
             res.send(newservice);
 
         })
@@ -62,6 +62,7 @@ async function run(){
             const dresult=await reviewdata.deleteOne(query)
             res.send(dresult)
            }) 
+       
           
       
 
